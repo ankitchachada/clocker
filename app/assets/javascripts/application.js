@@ -17,6 +17,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require local-time
 $(function() {
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
