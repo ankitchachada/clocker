@@ -4,25 +4,25 @@
     <title>Clocker App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-  <div class="jumbotron">
-    <h1 class="display-4">Clocker App</h1>
-    <hr class="my-4">
-    <p>Please clock your activity below:</p>
-    <p class="lead">
-      <% if user_signed_in? %>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary btn-lg" )%>
-        <% else %>
-          <%= link_to('Login', new_user_session_path) %> 
-      <% end %>
-    </p>
-</div>
-
-    <%= yield %>
+ <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Clocker App</h1>
+        <hr class="my-4">
+        <p>Please clock your activity below:</p>
+        <p class="lead">
+          <% if user_signed_in? %>
+            Currently logged in as <%= current_user.try(:name) %>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary" )%>
+          <% else %>
+              <%= link_to('Login', new_user_session_path) %> 
+          <% end %>
+        </p>
+    </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
