@@ -17,5 +17,25 @@ The applicaton consist of two models/modules:
 2. **ClockEvent**: <br/>
 	 This model is used to keep track of all the events. On homepage, it will always display today's events. In order to see all the events, user has to be admin and the url link is only available to admin(signed in) [Link to Clock Events](http://clockerapphimama.herokuapp.com/clock_events)
 
+**Helpers:**
+ClockEventHelper contains methods for displaying links and text on the main page.
+
+**To deploy code on the new machine from scratch**
+* Make sure ruby,rails and git are installed
+* Download repository from github
+* Go to the root of the application directory
+* run bundle install
+* if you are using sqlite then 
+  1. run rails db:create
+  2. run rails db:migrate
+  3. run rails db:seed
+* if you are running postgress
+	1. install postgres
+	2. add configuration in database.yml
+	3. repeat step from 1 to 3 from sqlite step
+* run rails s
+* Go to localhost:3000 in the web browser
+
+
 **Future Implmentations**
 *TODO
