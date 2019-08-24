@@ -51,8 +51,11 @@ class ClockEventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def clock_event_params
-      params.require(:clock_event).permit(:user_id, :is_clocked,:event_type)
-      params.require(:clock_event).permit(:user_id, :is_clocked,:event_type,:created_at) if current_user.role == "admin"
+      if current_user.role == "admin"
+        params.require(:clock_event).permit(:user_id, :is_clocked,:event_type,:created_at) 
+      else
+        params.require(:clock_event).permit(:user_id, :is_clocked,:event_type)
+      end
     end
 
     def authorize

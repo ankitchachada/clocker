@@ -1,6 +1,6 @@
 <% if current_user %>
 	<%= form_tag(clock_events_path, method: "post") do %>
-	 	<%= text_field_tag "clock_entry[event_type]" , "" ,{ placeholder: "Event Type", required: true} %>
+	 	<%= text_field_tag "clock_event[event_type]" , "" ,{ placeholder: "Event Type", required: true} %>
 	  <%= submit_tag  clock_button %>
 	<% end %>
 <% end %>
