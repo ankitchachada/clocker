@@ -11,7 +11,8 @@
     <div class="container">
       <div class="jumbotron">
         <h1 class="display-4">Clocker App</h1>
-        <hr class="my-4">
+        <canvas id="canvas" width="100" height="100">
+      </canvas>
         <p class="lead">
           <% if user_signed_in? %>
             Currently logged in as <%= current_user.try(:name) %>
