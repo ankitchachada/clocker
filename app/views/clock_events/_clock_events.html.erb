@@ -6,16 +6,19 @@
       <th scope="col">Event Type</th>
       <th scope="col">Clocked In or Clocked Out</th>
       <th scope="col">Time</th>
+      <th scope="col" colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody>
-  	<% @clock_events.each.with_index(1) do |user,index| %>
+  	<% @clock_events.each.with_index(1) do |clock_event,index| %>
 	    <tr>
 	      <th scope="row"><%= index %></th>
-	      <td><%= user.user.try(:name) %></td>
-	      <td><%= user.event_type %></td>
-	      <td><%= is_clocked(user) %></td>
-	      <td><%= local_time(user.created_at.strftime("%Y-%m-%d %H:%M:%S")) %></td>
+	      <td><%= clock_event.user.try(:name) %></td>
+	      <td><%= clock_event.event_type %></td>
+	      <td><%= is_clocked(clock_event) %></td>
+	      <td><%= local_time(clock_event.created_at.strftime("%Y-%m-%d %H:%M:%S")) %></td>
+        <td><%= link_to 'Edit', edit_clock_event_path(clock_event) %></td>
+        <td><%= link_to 'Destroy', clock_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	    </tr>
 	  <% end %>
   </tbody>

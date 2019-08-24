@@ -1,5 +1,7 @@
 class ClockEventsController < ApplicationController
   before_action :set_clock_event, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:index ,:edit,:update,:destroy]
+  before_action :authenticate_user!
 
   def index
     @clock_events = ClockEvent.order("created_at desc")
@@ -19,7 +21,7 @@ class ClockEventsController < ApplicationController
       clock_event.is_clocked = true
     end
     if clock_event.save
-   		redirect_to root_path, notice: 'Clock entry was successfully created.' 
+   		redirect_to root_path, notice: 'Clock event was successfully created.' 
  		else
     	redirect_to root_path, notice: 'Something went wrong' 
     end
@@ -28,35 +30,34 @@ class ClockEventsController < ApplicationController
   # PATCH/PUT /clock_events/1
   # PATCH/PUT /clock_events/1.json
   def update
-    respond_to do |format|
-      if @clock_event.update(clock_event_params)
-        format.html { redirect_to @clock_event, notice: 'Clock entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @clock_event }
-      else
-        format.html { render :edit }
-        format.json { render json: @clock_event.errors, status: :unprocessable_entity }
-      end
+    if @clock_event.update(clock_event_params)
+      redirect_to root_path, notice: 'Clock event was successfully updated.' 
+    else
+      redirect_to root_path, notice: 'Something went wrong' 
     end
   end
 
-  # DELETE /clock_events/1
-  # DELETE /clock_events/1.json
+
   def destroy
     @clock_event.destroy
-    respond_to do |format|
-      format.html { redirect_to clock_events_url, notice: 'Clock entry was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to clock_events_url, notice: 'Clock event was successfully destroyed.' 
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_clock_event
-      @clock_event = ClockEntry.find(params[:id])
+      @clock_event = ClockEvent.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def clock_event_params
       params.require(:clock_event).permit(:user_id, :is_clocked,:event_type)
+      params.require(:clock_event).permit(:user_id, :is_clocked,:event_type,:created_at) if current_user.role == "admin"
+    end
+
+    def authorize
+      unless current_user.role == "admin"
+        redirect_to root_path, notice: 'Please contact Admin'
+      end
     end
 end
