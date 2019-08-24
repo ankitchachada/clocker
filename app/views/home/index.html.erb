@@ -1,9 +1,8 @@
 <% if current_user %>
 	<%= form_tag(clock_events_path, method: "post") do %>
-	 	<%= text_field_tag "clock_entry[event_type]" , "" ,{ placeholder: "Event Type"} %>
+	 	<%= text_field_tag "clock_entry[event_type]" , "" ,{ placeholder: "Event Type", required: true} %>
 	  <%= submit_tag  clock_button %>
 	<% end %>
 <% end %>
-<% @clock_events.each do |user| %>
-  <%= user.user.email %> | <%= is_clocked(user) %><br/>
-<% end %>
+<hr/>
+<%= render 'clock_events/clock_events' %>

@@ -1,0 +1,22 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Event Type</th>
+      <th scope="col">Clocked In or Clocked Out</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @clock_events.each.with_index(1) do |user,index| %>
+	    <tr>
+	      <th scope="row"><%= index %></th>
+	      <td><%= user.user.try(:name) %></td>
+	      <td><%= user.event_type %></td>
+	      <td><%= is_clocked(user) %></td>
+	      <td><%= user.created_at %></td>
+	    </tr>
+	  <% end %>
+  </tbody>
+</table>
