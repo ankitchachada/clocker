@@ -1,0 +1,8 @@
+<%= form_tag(clock_events_path, method: "post") do %>
+ 	<%= text_field_tag "clock_entry[event_type]" %>
+  <%= submit_tag  clock_button %>
+<% end %>
+
+<% @clock_events.each do |user| %>
+  <%= user.user.email %> | <%= is_clocked(user) %><br/>
+<% end %>
