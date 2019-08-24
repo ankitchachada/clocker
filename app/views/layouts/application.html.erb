@@ -21,6 +21,7 @@
         <p class="lead">
           <% if user_signed_in? %>
             Currently logged in as <%= current_user.try(:name) %>
+            <%= all_events %>
             <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary" )%>
           <% else %>
               <%= link_to('Login to log your time', new_user_session_path) %> 
