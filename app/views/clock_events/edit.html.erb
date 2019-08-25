@@ -19,7 +19,8 @@
     <%= form.label :created_at %>
     <p style="display: none"><%= local_time(@clock_event.created_at)%></p>
     <%= form.text_field :created_at , value: "" %>
-    <%= form.text_field :offset , value: "" %>
+    <!-- to covert into local time -->
+    <%= form.hidden_field :offset , value: "" %> 
   </div>
 
   <div class="field">

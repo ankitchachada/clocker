@@ -17,6 +17,7 @@ The applicaton consist of two models/modules:
 2. **ClockEvent**: <br/>
 	 This model is used to keep track of all the events. On homepage, it will always display today's events. In order to see all the events, user has to be admin and the url link is only available to admin(signed in) [Link to Clock Events](http://clockerapphimama.herokuapp.com/clock_events)
 
+A user is created for you to test. user@example.com and 123456 
 **Helpers:**
 ClockEventHelper contains methods for displaying links and text on the main page.
 

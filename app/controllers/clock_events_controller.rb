@@ -28,7 +28,7 @@ class ClockEventsController < ApplicationController
   def update
     if @clock_event.update(clock_event_params)
       @clock_event.update_time(clock_event_params)
-      redirect_to root_path, notice: 'Clock event was successfully updated.' 
+      redirect_to clock_events_url, notice: 'Clock event was successfully updated.' 
     else
       redirect_to root_path, notice: 'Something went wrong' 
     end
