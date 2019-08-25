@@ -31,6 +31,7 @@ class ClockEventsController < ApplicationController
   # PATCH/PUT /clock_events/1.json
   def update
     if @clock_event.update(clock_event_params)
+      @clock_event.update_time(clock_event_params)
       redirect_to root_path, notice: 'Clock event was successfully updated.' 
     else
       redirect_to root_path, notice: 'Something went wrong' 
@@ -52,7 +53,7 @@ class ClockEventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def clock_event_params
       if current_user.role == "admin"
-        params.require(:clock_event).permit(:user_id, :is_clocked,:event_type,:created_at) 
+        params.require(:clock_event).permit(:offset,:user_id, :is_clocked,:event_type,:created_at) 
       else
         params.require(:clock_event).permit(:user_id, :is_clocked,:event_type)
       end

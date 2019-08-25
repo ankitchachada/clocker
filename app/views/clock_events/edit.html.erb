@@ -19,6 +19,7 @@
     <%= form.label :created_at %>
     <p style="display: none"><%= local_time(@clock_event.created_at)%></p>
     <%= form.text_field :created_at , value: "" %>
+    <%= form.text_field :offset , value: "" %>
   </div>
 
   <div class="field">
@@ -34,5 +35,7 @@
 $(document).on('turbolinks:load', function() {
    setTimeout(function(){   
     $('#clock_event_created_at').val($('[datetime]')[0].innerText) }, 300);
+    var offset = new Date().getTimezoneOffset();
+    $("#clock_event_offset").val(offset/60)
 });
 </script>
