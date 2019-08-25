@@ -13,13 +13,9 @@ class ClockEventsController < ApplicationController
   # POST /clock_events
   # POST /clock_events.json
   def create
-  	last_entry = current_user.clock_events.last.is_clocked rescue nil
+  	last_entry = current_user.clock_events.empty? ? true : false
     clock_event = current_user.clock_events.create(clock_event_params)
-    if last_entry
-      clock_event.is_clocked = false
-    else
-      clock_event.is_clocked = true
-    end
+    clock_event.is_clocked = last_entry
     if clock_event.save
    		redirect_to root_path, notice: 'Clock event was successfully created.' 
  		else
