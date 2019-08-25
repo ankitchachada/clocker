@@ -1,3 +1,5 @@
+**Note** :I have used two spacing but somehow github adds 4 spaces
+
 This is a simple clock event tracking application developed in Ruby on Rails. The application's front-end and back-end are developed in Rails 5.2.3 and ruby 2.5. 
 
 The development server was ubuntu 14.04 LTS and the production server is heroku. The database for development server is sqlite where as for production it is postgres.
@@ -12,7 +14,7 @@ The development server was ubuntu 14.04 LTS and the production server is heroku.
 
 The applicaton consist of two models/modules:
 1. **User**: <br/>
-   This is generated using devise gem. Two extra fields are added i.e. name and role. By default role is user. Admin role is created using seeds.rb file.
+   This is generated using devise gem. Two extra fields are added i.e. name and role. By default role is user. Admin role is created using seeds.rb file.(credentials are present in seeds.rb)
 
 2. **ClockEvent**: <br/>
 	 This model is used to keep track of all the events. On homepage, it will always display today's events. In order to see all the events, user has to be admin and the url link is only available to admin(signed in) [Link to Clock Events](http://clockerapphimama.herokuapp.com/clock_events)
