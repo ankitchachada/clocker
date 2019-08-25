@@ -38,20 +38,22 @@ ClockEventHelper contains methods for displaying links and text on the main page
 * Go to localhost:3000 in the web browser
 
 **How did you approach this challenge?**
-I intially decided to go with React as front-end and Sinatra as backend since it is a lighweight application. I even spend some couple of hours to figure some things out but eventually I ended up doing everything in Rails as I have experience in Rails for both front end and back end. I first implemented the core backend logic and then work on styling. I then added admin model to provide authorization of controlling clocked events.  
+* I intially decided to go with React as front-end and Sinatra as backend since it is a lighweight application. I even spend some couple of hours to figure some things out but eventually I ended up doing everything in Rails as I have experience in Rails for both front end and back end. I first implemented the core backend logic and then work on styling. I then added admin model to provide authorization of controlling clocked events.  
 
 
 **What schema design did you choose and why?**
 * I used SQL database because Activerrecord is easy to work with. I used sqlite for development server as it was pretty fast to setup and run. For heroku, I used postgres as it doesn't support sqlite. 
 
 * User
-  * Currently, the user has a role attribute which I was using to distinguish admin and a normal user. Below it is defined what I would have done differently given a month.
+  * Currently, the user has a role attribute which I was using to distinguish admin and a normal user. The important fields are email, password and name. Below it is defined what I would have done differently given a month.
 
 * ClockEvent
-  * ClockEvent has an attribute event type which stores the reason for what a user is clocking for. This is discussed below. 
+  * ClockEvent has an attribute event type which stores the reason for what a user is clocking for, user_id to store user. I have used created_at attribute to store the timestamp and is_clocked to know if the user is clocked in or not
+
+User has_many clock_events and clock_events belongs to user model. I have added dependent destroy, to destroy associated clock events, if a user is deleted.
 
 **If you were given another day to work on this, how would you spend it?**
-* I would have spend time on working more on timezone. Currently application supports local timezone but there were couple of hacks I have to use. I would research more and come up with more optimal and better way of doing this. 
+* I would have spend time on working more on timezone. Currently application supports local timezone but there were couple of hacks I have to use. I would research more and come up with more optimal and better way of doing this also added validation for time. 
 
 * Also, right now the app only supports web version, I would have formated the API in such a way that they can be consumed by mobile apps. They can still use it as we just need to send json response. 
 
