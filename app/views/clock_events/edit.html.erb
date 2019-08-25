@@ -10,10 +10,15 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
+   <div class="field">
+    <%= form.label :event_type %>
+    <%= form.text_field :event_type %>
+    </div>
+
     <%= form.label :created_at %>
-    <%= form.text_field :created_at %>
+    <p style="display: none"><%= local_time(@clock_event.created_at)%></p>
+    <%= form.text_field :created_at , value: "" %>
   </div>
 
   <div class="field">
@@ -25,3 +30,9 @@
     <%= form.submit %>
   </div>
 <% end %>
+<script type="text/javascript">
+$(document).on('turbolinks:load', function() {
+   setTimeout(function(){   
+    $('#clock_event_created_at').val($('[datetime]')[0].innerText) }, 300);
+});
+</script>
