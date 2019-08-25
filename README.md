@@ -1,6 +1,6 @@
-This is a simple clock event tracking application developed in Ruby on Rails. The application front-end and back-end are developed in Rails 5.2.3 and ruby2.5. 
+This is a simple clock event tracking application developed in Ruby on Rails. The application's front-end and back-end are developed in Rails 5.2.3 and ruby 2.5. 
 
-The development server is ubuntu 14.04 LTS and the production server is heroku. The database for development server is sqlite where as for production it is postgres.
+The development server was ubuntu 14.04 LTS and the production server is heroku. The database for development server is sqlite where as for production it is postgres.
 
 **Gems Used:**
 * Authentication - devise
@@ -12,12 +12,13 @@ The development server is ubuntu 14.04 LTS and the production server is heroku. 
 
 The applicaton consist of two models/modules:
 1. **User**: <br/>
-   This is generated using devise gem. Two extra fields are added i.e. name and role. By default role is user. Admin role is created using seeds file.
+   This is generated using devise gem. Two extra fields are added i.e. name and role. By default role is user. Admin role is created using seeds.rb file.
 
 2. **ClockEvent**: <br/>
 	 This model is used to keep track of all the events. On homepage, it will always display today's events. In order to see all the events, user has to be admin and the url link is only available to admin(signed in) [Link to Clock Events](http://clockerapphimama.herokuapp.com/clock_events)
 
-A user is created for you to test. user@example.com and 123456 
+A user is created for you to test. user@example.com and 12345678
+
 **Helpers:**
 ClockEventHelper contains methods for displaying links and text on the main page.
 
@@ -42,10 +43,10 @@ ClockEventHelper contains methods for displaying links and text on the main page
 
 
 **What schema design did you choose and why?**
-* I used SQL database because Activerrecord is easy to work with. I used sqlite for development server as it was pretty fast to setup and run. For heroku, I used postgres as it doesn't support sqlite. 
+* I used SQL database because ActiveRecord is easy to work with. I used sqlite for development server as it was pretty fast to setup and run. For heroku, I used postgres as it doesn't support sqlite. 
 
 * User
-  * Currently, the user has a role attribute which I was using to distinguish admin and a normal user. The important fields are email, password and name. Below it is defined what I would have done differently given a month.
+  * Currently, the user has a role attribute which is was used to distinguish between admin and a normal user. The important fields are email, password and name. Below it is defined what I would have done differently given a month.
 
 * ClockEvent
   * ClockEvent has an attribute event type which stores the reason for what a user is clocking for, user_id to store user. I have used created_at attribute to store the timestamp and is_clocked to know if the user is clocked in or not
