@@ -77,3 +77,9 @@ User has_many clock_events and clock_events belongs to user model. I have added 
 
 * A basic CMS website for promotion.
 
+**References:**
+* https://www.w3schools.com for displaying clock
+* http://stackoverflow.com for timezone issues
+* https://www.heroku.com/ for deployment
+* https://github.com for version control
+* Sublime Text Editior for coding
